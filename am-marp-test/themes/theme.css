@@ -1,13 +1,6 @@
 @charset "UTF-8";
 /* @theme theme */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
-section.company-profile {
-  position: relative;
-}
-section.company-profile img {
-  width: 50%;
-}
-
 /* =============================================================================
    Marp用ユーティリティクラス集
    ============================================================================= */
@@ -2950,6 +2943,79 @@ table .cell-label {
   white-space: nowrap;
   font-weight: 500;
   color: #1C71A2;
+}
+
+section.company {
+  padding: 1rem;
+}
+section.company h4 {
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #1C71A2;
+  position: relative;
+}
+section.company ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  list-style: none;
+  padding: 0 2rem;
+  margin: 0;
+}
+section.company li {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #BAC9D4;
+  margin: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  text-align: left;
+}
+section.company li img {
+  background-color: #ffffff !important;
+  width: 100%;
+  object-fit: contain;
+  margin: 0 auto 0.75rem auto;
+  display: block;
+  box-sizing: border-box;
+}
+
+section.mission .container {
+  gap: 4rem;
+  width: 100%;
+  align-items: center;
+  height: calc(100vh - 80px);
+  display: flex;
+}
+section.mission .container_left {
+  flex: 1;
+  text-align: left;
+}
+section.mission .container_left h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
+  border-bottom: 1px solid #BAC9D4;
+  padding-bottom: 0.5rem;
+  margin: 3rem 0 1rem 0;
+}
+section.mission .container_left h3:first-of-type {
+  margin-top: 0;
+}
+section.mission .container_left h4 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0E3A51;
+  line-height: 1.2;
+  margin-bottom: 3rem;
+}
+section.mission .container_right {
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: left;
 }
 
 /*# sourceMappingURL=theme.css.map */

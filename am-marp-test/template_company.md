@@ -4,6 +4,61 @@ theme: theme
 paginate: true
 ---
 
+<!-- _header: '事業紹介' -->
+<!-- _class: company -->
+
+#### 運営サービス一覧（一例）
+
+- ![アポドリ](.images/apodori.png)「アポドリ」は、AIエージェントが各企業専属のインサイドセールス担当として、顧客企業のキーパーソンとの商談を獲得・提供するサービスです。
+
+- ![リクルタAI](.images/rikuruta.png)「リクルタAI」は、採用業務をトータルサポートするAIエージェントです。運営元：株式会社Algomatic Works
+
+- ![DMM GAME翻訳](.images/game.png)ゲームの世界観に合わせた高品質な翻訳を、1言語あたり1文字2円〜提供します。
+
+- ![AX（AI Transformation）](.images/ax.png)トップダウンの戦略的AI導入と、現場のニーズに即したユースケース開発を両輪に、AI活用による業務変革（AX）を支援します。
+
+- ![にじチャット](.images/niji.png)日常の空き時間や夜遅い時間帯などでも「誰かとちょっと話したいな」と望む時に、気軽に自然でリアルタイムな会話をおしゃべりやチャットで楽しめる新感覚のコミュニケーション体験をお届けします。
+
+- ![Algomatic Freelance](.images/amf.png)生成AI求人特化型のフリーランスエージェントです。現役生成AI人材が希望の案件探しをサポートします。運営元：株式会社Algomatic Works
+
+- ![NeoDesign AI](.images/neo.png)「ネオデザインAI」は非デザイナーでも簡単に高品質の商用利用可能なクリエイティブが大量に生成できる「画像生成AIエージェント」です。
+
+- ![炎上対策ミマモルくん](.images/mimamoru.png)『炎上対策ミマモルくん』β版では、Algomatic独自開発の言語解析AIにより、炎上兆候の検知から対策までを自動化し、平常時の防止対策と発生時の被害極小化を実現します。
+
+---
+
+<!-- _header: 'Algomaticのミッション' -->
+<!-- _class: mission -->
+
+<div class="container">
+
+<div class="container_left">
+
+### Mission  
+#### AI革命で人々を幸せにする
+
+### Vision
+#### 時代を代表する事業群を創る
+
+</div>
+
+<div class="container_right">
+Algomaticは、未来を創造する革新者である。
+私たちは、まだ見ぬ未来を描き、現実のものとする。
+人類の幸せな未来を創造することは、最高に面白いミッションだ。
+義務ではない。ただ、純粋な面白さが、私たちを熱狂させる。
+Algomaticは、尖った才能の集合である。
+凡庸な万人より、卓越した少数が世界を変える。
+私たちは、技術を愛する技術者であり、商いを愛する商人でもある。
+その両輪を極め、世界を変える発明を生み出し続ける。
+技術力と商才を結集し、人々の人生を幸せで満たす。
+それこそが、Algomaticの存在意義であり、喜びなのだ。
+</div>
+
+</div>
+
+---
+
 <!-- _class: company-profile -->
 <!-- _header: 'プロフィール' -->
 
@@ -31,21 +86,6 @@ paginate: true
 | 主事業 | 大規模言語モデル等生成AI技術を活用した、サービスの開発・提供 |
 | 事業所 | 東京都中央区日本橋久松町10-6 THE CROSS日本橋人形町 8F |
 | 関係会社 | 合同会社DMM.com / 株式会社Algomatic Works |
-
----
-
-<!-- _class: cover -->
-
-# 目指す世界
-
-Algomaticは、いわゆるスタートアップ的な通説に反する戦い方をします。
-1仮説1プロダクトで戦うのではなく、最初から複数領域で同時多発的に事業を立ち上げています。
-
-## Mission  
-**AI革命で人々を幸せにする**
-
-## Vision  
-**時代を代表する事業群を創る**
 
 ---
 
@@ -82,35 +122,3 @@ Algomaticでは、激動の時代に即応し続けるため、
 この挑戦に、共に立ち向かいませんか？
 
 ![代表取締役CEO 大野 峻典の写真](.images/ono.png){.ceo-message}
-
----
-
-<!-- _class: .company-service -->
-
-# 事業実績
-
-## ![アポドリ](.images/logo_algomatic.svg){.company-service__img}
-「アポドリ」は、AIエージェントが各企業専属のインサイドセールス担当として、顧客企業のキーパーソンとの商談を獲得・提供するサービスです。
-
-## ![リクルタAI](.images/logo_algomatic.svg){.company-service__img}
-「リクルタAI」は、採用業務をトータルサポートするAIエージェントです。
-運営元：株式会社Algomatic Works
-
-## ![DMM GAME翻訳](.images/logo_algomatic.svg){.company-service__img}
-ゲームの世界観に合わせた高品質な翻訳を、1言語あたり1文字2円〜提供します。
-
-## ![AX（AI Transformation）](.images/logo_algomatic.svg){.company-service__img}
-トップダウンの戦略的AI導入と、現場のニーズに即したユースケース開発を両輪に、AI活用による業務変革（AX）を支援します。
-
-## ![にじチャット](.images/logo_algomatic.svg){.company-service__img}
-日常の空き時間や夜遅い時間帯などでも「誰かとちょっと話したいな」と望む時に、気軽に自然でリアルタイムな会話をおしゃべりやチャットで楽しめる新感覚のコミュニケーション体験をお届けします。
-
-## ![Algomatic Freelance](.images/logo_algomatic.svg){.company-service__img}
-生成AI求人特化型のフリーランスエージェントです。現役生成AI人材が希望の案件探しをサポートします。
-運営元：株式会社Algomatic Works
-
-## ![NeoDesign AI](.images/logo_algomatic.svg){.company-service__img}
-「ネオデザインAI」は非デザイナーでも簡単に高品質の商用利用可能なクリエイティブが大量に生成できる「画像生成AIエージェント」です。
-
-## ![炎上対策ミマモルくん](.images/logo_algomatic.svg){.company-service__img}
-『炎上対策ミマモルくん』β版では、Algomatic独自開発の言語解析AIにより、炎上兆候の検知から対策までを自動化し、平常時の防止対策と発生時の被害極小化を実現します。
