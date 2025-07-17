@@ -1,0 +1,813 @@
+@use "sass:map";
+
+/* =============================================================================
+   Marp用ユーティリティクラス集
+   ============================================================================= */
+
+// 変数定義
+$spacing-unit: 1rem;
+$font-sizes: (
+  xs3: 0.5em,
+  xs2: 0.625em,
+  xs: 0.75em,
+  sm: 0.875em,
+  base: 1em,
+  lg: 1.125em,
+  xl: 1.25em,
+  xl2: 1.5em,
+  xl3: 1.875em,
+  xl4: 2.25em,
+  xl5: 3em,
+  xl6: 3.75em,
+  xl7: 4.5em,
+  xl8: 6em,
+  xl9: 8em,
+  display: 120px
+);
+
+$line-height-scale: (
+  1: 1,
+  2: 1.125,
+  3: 1.25,
+  4: 1.375,
+  5: 1.5,
+  6: 1.625,
+  7: 1.75,
+  8: 2,
+  9: 2.25,
+  10: 2.5
+);
+
+@function font-size($size) {
+  @return map.get($font-sizes, $size);
+}
+
+@function line-height($scale) {
+  @return map.get($line-height-scale, $scale);
+}
+
+@mixin typography($size, $leading: null) {
+  font-size: map.get($font-sizes, $size);
+  
+  @if $leading {
+    line-height: map.get($line-height-scale, $leading);
+  }
+}
+
+// ==========================
+// Color Tokens
+// --------------------------
+// Algomaticブランドのカラーパレット
+// ==========================
+
+// --- Primary (NavyBlue)
+$navyblue: (
+  10:  #F7FCFF,
+  50:  #EBF6FF,
+  100: #DBF0FF,
+  200: #CCE9FF,
+  300: #A6D8FF,
+  400: #7FC6F5,
+  500: #55A4D9,
+  600: #328BC7,
+  700: #1C71A2,
+  800: #15567A,
+  900: #124966,
+  950: #0E3A51  // Brand color
+);
+
+// --- GrayBlue (Neutral)
+$grayblue: (
+  10:  #F7FBFC,
+  50:  #E9F2F7,
+  100: #D1DDE5,
+  200: #BAC9D4,
+  300: #A5B5C2,
+  400: #90A2B0,
+  500: #7D8F9E,
+  600: #6B7C8C,
+  700: #596A7A,
+  800: #495869,
+  900: #3A4857,
+  950: #2C3745
+);
+
+// --- LimeGreen
+$limegreen: (
+  10:  #F5FFFD,
+  50:  #E8FCF8,
+  100: #D5FBF1,
+  200: #B9F0E6,
+  300: #80E1D1,
+  400: #4BCAB6,
+  500: #1CA290,
+  600: #158C7E,
+  700: #157067,
+  800: #165953,
+  900: #174747,
+  950: #072C2A
+);
+
+// --- Orange
+$orange: (
+  10:  #FFFDF7,
+  50:  #FFF9E8,
+  100: #FFEDC6,
+  200: #FFE4AD,
+  300: #FFDC8A,
+  400: #FFC254,
+  500: #FFB638,
+  600: #FF9900,
+  700: #E38400,
+  800: #C47000,
+  900: #8F5100,
+  950: #573000
+);
+
+// --- Red
+$red: (
+  10:  #FFF9F9,
+  50:  #FFF1F1,
+  100: #FFDFDF,
+  200: #FFC4C4,
+  300: #FF9B9B,
+  400: #FF6262,
+  500: #FF3131,
+  600: #E51111,
+  700: #C40A0A,
+  800: #A70000,
+  900: #8A1212,
+  950: #4C0303
+);
+
+// --- Purple
+$purple: (
+  10:  #FCFAFF,
+  50:  #F8F2FF,
+  100: #F1E5FF,
+  200: #E6CCFF,
+  300: #C89DF2,
+  400: #B472E5,
+  500: #A04CD9,
+  600: #9029CC,
+  700: #7A29A2,
+  800: #6F25AD,
+  900: #602974,
+  950: #421F4D
+);
+
+// --- Basic Colors
+$white: #ffffff;
+$black: #000000;
+
+// Helper functions
+@function navyblue($level) {
+    @return map.get($navyblue, $level);
+}
+
+@function grayblue($level) {
+    @return map.get($grayblue, $level);
+}
+
+@function limegreen($level) {
+    @return map.get($limegreen, $level);
+}
+
+@function orange($level) {
+    @return map.get($orange, $level);
+}
+
+@function red($level) {
+    @return map.get($red, $level);
+}
+
+@function purple($level) {
+    @return map.get($purple, $level);
+}
+
+$primary-colors: $navyblue;
+
+// =============================================================================
+// Layout & Flexbox
+// =============================================================================
+
+/* Container & Columns */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.c, .columns {
+  display: flex;
+  gap: 1em;
+  
+  > * {
+    flex: 1;
+  }
+}
+
+.c-2 { grid-template-columns: repeat(2, 1fr); }
+.c-3 { grid-template-columns: repeat(3, 1fr); }
+.c-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Flex */
+.flex {
+  display: flex;
+  
+  &-col { flex-direction: column; }
+  &-row { flex-direction: row; }
+  &-wrap { flex-wrap: wrap; }
+  &-nowrap { flex-wrap: nowrap; }
+}
+
+.justify {
+  &-start { justify-content: flex-start; }
+  &-end { justify-content: flex-end; }
+  &-center { justify-content: center; }
+  &-between { justify-content: space-between; }
+  &-around { justify-content: space-around; }
+}
+
+.items {
+  &-start { align-items: flex-start; }
+  &-end { align-items: flex-end; }
+  &-center { align-items: center; }
+  &-baseline { align-items: baseline; }
+  &-stretch { align-items: stretch; }
+}
+
+.flex-1 { flex: 1; }
+.flex-auto { flex: auto; }
+.flex-none { flex: none; }
+
+/* Position */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+/* Fitting */
+.fit {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width: max-content;
+  max-width: 100%;
+}
+
+// =============================================================================
+// Spacing (Margin & Padding)
+// =============================================================================
+
+@each $size in (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24) {
+  $value: if($size == 0, 0, #{$size * 0.25}rem);
+  
+  // Margin
+  .m-#{$size} { margin: $value; }
+  .mt-#{$size} { margin-top: $value; }
+  .mr-#{$size} { margin-right: $value; }
+  .mb-#{$size} { margin-bottom: $value; }
+  .ml-#{$size} { margin-left: $value; }
+  .mx-#{$size} { margin-left: $value; margin-right: $value; }
+  .my-#{$size} { margin-top: $value; margin-bottom: $value; }
+  
+  // Padding
+  .p-#{$size} { padding: $value; }
+  .pt-#{$size} { padding-top: $value; }
+  .pr-#{$size} { padding-right: $value; }
+  .pb-#{$size} { padding-bottom: $value; }
+  .pl-#{$size} { padding-left: $value; }
+  .px-#{$size} { padding-left: $value; padding-right: $value; }
+  .py-#{$size} { padding-top: $value; padding-bottom: $value; }
+}
+
+// Auto margins
+.m-auto { margin: auto; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.my-auto { margin-top: auto; margin-bottom: auto; }
+
+// =============================================================================
+// Typography
+// =============================================================================
+
+/* Font Sizes */
+@each $name, $size in $font-sizes {
+  .text-#{$name} {
+    font-size: $size;
+  }
+}
+
+/* Font Weight */
+.font-thin { font-weight: 100; }
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+.font-black { font-weight: 900; }
+
+/* Text Alignment */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+/* Line Height */
+.leading-none { line-height: 1; }
+.leading-tight { line-height: 1.25; }
+.leading-snug { line-height: 1.375; }
+.leading-normal { line-height: 1.5; }
+.leading-relaxed { line-height: 1.625; }
+.leading-loose { line-height: 2; }
+
+/* Text Transform */
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.normal-case { text-transform: none; }
+
+/* Text Decoration */
+.underline { text-decoration: underline; }
+.line-through { text-decoration: line-through; }
+.no-underline { text-decoration: none; }
+
+// =============================================================================
+// Colors
+// =============================================================================
+
+// =============================================================================
+// Colors
+// =============================================================================
+
+/* Text Colors */
+// Basic colors
+.text-white { color: $white; }
+.text-black { color: $black; }
+
+// NavyBlue
+@each $level, $color in $navyblue {
+  .text-navyblue-#{$level} { color: $color; }
+}
+
+// GrayBlue
+@each $level, $color in $grayblue {
+  .text-grayblue-#{$level} { color: $color; }
+}
+
+// LimeGreen
+@each $level, $color in $limegreen {
+  .text-limegreen-#{$level} { color: $color; }
+}
+
+// Orange
+@each $level, $color in $orange {
+  .text-orange-#{$level} { color: $color; }
+}
+
+// Red
+@each $level, $color in $red {
+  .text-red-#{$level} { color: $color; }
+}
+
+// Purple
+@each $level, $color in $purple {
+  .text-purple-#{$level} { color: $color; }
+}
+
+/* Background Colors */
+// Basic colors
+.bg-white { background-color: $white; }
+.bg-black { background-color: $black; }
+
+// NavyBlue
+@each $level, $color in $navyblue {
+  .bg-navyblue-#{$level} { background-color: $color; }
+}
+
+// GrayBlue
+@each $level, $color in $grayblue {
+  .bg-grayblue-#{$level} { background-color: $color; }
+}
+
+// LimeGreen
+@each $level, $color in $limegreen {
+  .bg-limegreen-#{$level} { background-color: $color; }
+}
+
+// Orange
+@each $level, $color in $orange {
+  .bg-orange-#{$level} { background-color: $color; }
+}
+
+// Red
+@each $level, $color in $red {
+  .bg-red-#{$level} { background-color: $color; }
+}
+
+// Purple
+@each $level, $color in $purple {
+  .bg-purple-#{$level} { background-color: $color; }
+}
+
+/* Border Colors */
+// Basic colors
+.border-white { border-color: $white; }
+.border-black { border-color: $black; }
+
+// NavyBlue
+@each $level, $color in $navyblue {
+  .border-navyblue-#{$level} { border-color: $color; }
+}
+
+// GrayBlue
+@each $level, $color in $grayblue {
+  .border-grayblue-#{$level} { border-color: $color; }
+}
+
+// LimeGreen
+@each $level, $color in $limegreen {
+  .border-limegreen-#{$level} { border-color: $color; }
+}
+
+// Orange
+@each $level, $color in $orange {
+  .border-orange-#{$level} { border-color: $color; }
+}
+
+// Red
+@each $level, $color in $red {
+  .border-red-#{$level} { border-color: $color; }
+}
+
+// Purple
+@each $level, $color in $purple {
+  .border-purple-#{$level} { border-color: $color; }
+}
+
+// Primary color shortcuts (using navyblue-950 as primary)
+.text-primary { color: navyblue(950); }
+.bg-primary { background-color: white; }
+.border-primary { border-color: navyblue(500); }
+
+// Secondary color shortcuts (using grayblue-500 as secondary)
+.text-secondary { color: grayblue(700); }
+.bg-secondary { background-color: grayblue(10); }
+.border-secondary { border-color: grayblue(500); }
+
+// =============================================================================
+// Borders & Radius
+// =============================================================================
+
+/* Border Width */
+.border { border-width: 1px; }
+.border-0 { border-width: 0; }
+.border-2 { border-width: 2px; }
+.border-4 { border-width: 4px; }
+.border-8 { border-width: 8px; }
+
+.border-t { border-top-width: 1px; }
+.border-r { border-right-width: 1px; }
+.border-b { border-bottom-width: 1px; }
+.border-l { border-left-width: 1px; }
+
+/* Border Radius */
+.rounded-none { border-radius: 0; }
+.rounded-sm { border-radius: 0.125rem; }
+.rounded { border-radius: 0.25rem; }
+.rounded-md { border-radius: 0.375rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.rounded-xl { border-radius: 0.75rem; }
+.rounded-2xl { border-radius: 1rem; }
+.rounded-3xl { border-radius: 1.5rem; }
+.rounded-full { border-radius: 9999px; }
+
+// =============================================================================
+// Size & Dimensions
+// =============================================================================
+
+/* Width */
+.w-auto { width: auto; }
+.w-full { width: 100%; }
+.w-screen { width: 100vw; }
+.w-1\/2 { width: 50%; }
+.w-1\/3 { width: 33.333333%; }
+.w-2\/3 { width: 66.666667%; }
+.w-1\/4 { width: 25%; }
+.w-3\/4 { width: 75%; }
+
+/* Height */
+.h-auto { height: auto; }
+.h-full { height: 100%; }
+.h-screen { height: 100vh; }
+
+/* Max Width */
+.max-w-xs { max-width: 20rem; }
+.max-w-sm { max-width: 24rem; }
+.max-w-md { max-width: 28rem; }
+.max-w-lg { max-width: 32rem; }
+.max-w-xl { max-width: 36rem; }
+.max-w-2xl { max-width: 42rem; }
+.max-w-4xl { max-width: 56rem; }
+.max-w-6xl { max-width: 72rem; }
+.max-w-full { max-width: 100%; }
+
+$widths: (
+  auto: auto,
+  full: 100%,
+  screen: 100vw,
+  1\/2: 50%,
+  1\/3: 33.333333%,
+  2\/3: 66.666667%,
+  1\/4: 25%,
+  3\/4: 75%,
+  1\/5: 20%,
+  2\/5: 40%,
+  3\/5: 60%,
+  4\/5: 80%,
+  1\/6: 16.666667%,
+  5\/6: 83.333333%
+);
+
+$max-widths: (
+  xs: 20rem,
+  sm: 24rem,
+  md: 28rem,
+  lg: 32rem,
+  xl: 36rem,
+  2xl: 42rem,
+  3xl: 48rem,
+  4xl: 56rem,
+  5xl: 64rem,
+  6xl: 72rem,
+  7xl: 80rem,
+  full: 100%,
+  none: none
+);
+
+$heights: (
+  auto: auto,
+  full: 100%,
+  screen: 100vh,
+  1\/2: 50%,
+  1\/3: 33.333333%,
+  2\/3: 66.666667%,
+  1\/4: 25%,
+  3\/4: 75%
+);
+
+@function width($key) {
+  @return map.get($widths, $key);
+}
+
+@function max-width($key) {
+  @return map.get($max-widths, $key);
+}
+
+@function height($key) {
+  @return map.get($heights, $key);
+}
+
+@each $name, $value in $heights {
+  .h-#{$name} {
+    height: $value;
+  }
+}
+
+// =============================================================================
+// Display & Visibility
+// =============================================================================
+
+.block { display: block; }
+.inline-block { display: inline-block; }
+.inline { display: inline; }
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.grid { display: grid; }
+.hidden { display: none; }
+
+.visible { visibility: visible; }
+.invisible { visibility: hidden; }
+
+// =============================================================================
+// Shadows & Effects
+// =============================================================================
+
+.shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+.shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
+.shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+.shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+.shadow-none { box-shadow: none; }
+
+// =============================================================================
+// Transitions & Animations
+// =============================================================================
+
+.transition { transition: all 0.3s ease; }
+.transition-colors { transition: color 0.3s ease, background-color 0.3s ease; }
+.transition-opacity { transition: opacity 0.3s ease; }
+.transition-transform { transition: transform 0.3s ease; }
+
+.hover\:scale-105:hover { transform: scale(1.05); }
+.hover\:scale-110:hover { transform: scale(1.1); }
+.hover\:opacity-80:hover { opacity: 0.8; }
+.hover\:opacity-60:hover { opacity: 0.6; }
+
+// =============================================================================
+// Opacity
+// =============================================================================
+
+.opacity-0 { opacity: 0; }
+.opacity-25 { opacity: 0.25; }
+.opacity-50 { opacity: 0.5; }
+.opacity-75 { opacity: 0.75; }
+.opacity-100 { opacity: 1; }
+
+// =============================================================================
+// Z-Index
+// =============================================================================
+
+.z-0 { z-index: 0; }
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-30 { z-index: 30; }
+.z-40 { z-index: 40; }
+.z-50 { z-index: 50; }
+
+// =============================================================================
+// Overflow
+// =============================================================================
+
+.overflow-auto { overflow: auto; }
+.overflow-hidden { overflow: hidden; }
+.overflow-visible { overflow: visible; }
+.overflow-scroll { overflow: scroll; }
+
+// =============================================================================
+// Cursor
+// =============================================================================
+
+.cursor-auto { cursor: auto; }
+.cursor-default { cursor: default; }
+.cursor-pointer { cursor: pointer; }
+.cursor-wait { cursor: wait; }
+.cursor-text { cursor: text; }
+.cursor-move { cursor: move; }
+.cursor-not-allowed { cursor: not-allowed; }
+
+// =============================================================================
+// Alert/Notification Components
+// =============================================================================
+
+.alert {
+  --padding-x: 1.25rem;
+  --padding-y: 0.75rem;
+  
+  position: relative;
+  margin-bottom: 1rem;
+  padding: var(--padding-y) var(--padding-x);
+  border-radius: 0.75rem;
+  text-align: left;
+  
+  > p {
+    margin: 0;
+  }
+  
+  &::before {
+    display: block;
+    padding-left: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  &::after {
+    position: absolute;
+    top: calc(var(--padding-y) * 1.3);
+    left: calc(var(--padding-x) - 0.2rem);
+    content: '';
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.alert-info {
+  @extend .alert;
+  background-color: rgba(navyblue(200), 0.3);
+  
+  &::before {
+    content: 'Info';
+    color: navyblue(700);
+  }
+}
+
+.alert-success {
+  @extend .alert;
+  background-color: rgba(limegreen(200), 0.3);
+  
+  &::before {
+    content: 'Success';
+    color: limegreen(700);
+  }
+}
+
+.alert-warning {
+  @extend .alert;
+  background-color: rgba(orange(200), 0.3);
+  
+  &::before {
+    content: 'Warning';
+    color: orange(700);
+  }
+}
+
+.alert-error {
+  @extend .alert;
+  background-color: rgba(red(200), 0.3);
+  
+  &::before {
+    content: 'Error';
+    color: red(700);
+  }
+}
+
+// =============================================================================
+// Utility Classes for Presentations
+// =============================================================================
+
+.center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.full-height {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.slide-subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.highlight {
+  background-color: #fef3c7;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+// =============================================================================
+// Responsive Utilities
+// =============================================================================
+
+@media (max-width: 768px) {
+  .sm\:hidden { display: none; }
+  .sm\:block { display: block; }
+  .sm\:text-sm { font-size: 0.875rem; }
+  .sm\:text-base { font-size: 1rem; }
+  .sm\:p-4 { padding: 1rem; }
+  .sm\:m-2 { margin: 0.5rem; }
+}
+
+@media (min-width: 769px) {
+  .md\:block { display: block; }
+  .md\:flex { display: flex; }
+  .md\:grid { display: grid; }
+  .md\:text-lg { font-size: 1.125rem; }
+  .md\:text-xl { font-size: 1.25rem; }
+}

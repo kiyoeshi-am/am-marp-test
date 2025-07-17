@@ -1,0 +1,389 @@
+/* @theme theme */
+
+@use 'partials/company' as *;
+@use 'partials/utility' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+header {
+  position: relative;
+  color: navyblue(950);
+  height: 32px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  
+  // ヘッダーテキストのスタイル
+  font-size: font-size(sm);
+  font-weight: bold;
+  line-height: line-height(1);
+  
+  // ロゴ（疑似要素）
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    width: 120px;
+    height: 24px;
+    background-image: url(".images/logo_algomatic.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 999;
+  }
+}
+
+section {
+  color: navyblue(950);
+  background-color: #ffffff;
+  font-family: 'Noto Sans JP', 'Noto Sans CJK JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;                           
+  box-sizing: border-box;
+}
+
+section * {
+  word-wrap: break-word;            
+  overflow-wrap: break-word;        
+  hyphens: auto;                    
+  max-width: 100%;
+}
+
+h1 {
+  @include typography(xl8, 2); // 6em, 1.125
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  
+  &.display {
+    @include typography(xl9, 1); // 8em, 1
+  }
+  
+  &.large {
+    @include typography(xl7, 3); // 4.5em, 1.25
+  }
+}
+
+h2 {
+  @include typography(xl6, 3); // 3.75em, 1.25
+  font-weight: 600;
+  margin: 0 0 1.25rem 0;
+  
+  &.large {
+    @include typography(xl7, 2); // 4.5em, 1.125
+  }
+}
+
+h3 {
+  @include typography(xl4, 4); // 2.25em, 1.375
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  
+  &.large {
+    @include typography(xl5, 3); // 3em, 1.25
+  }
+}
+
+h4 {
+  @include typography(xl2, 5); // 1.5em, 1.5
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  
+  &.large {
+    @include typography(xl3, 4); // 1.875em, 1.375
+  }
+}
+
+h5 {
+  @include typography(xl, 5);     // 1.25em, 1.5
+  font-weight: 500;
+  margin: 0 0 0.5rem 0;
+}
+
+h6 {
+  @include typography(lg, 5);     // 1.125em, 1.5
+  font-weight: 500;
+  margin: 0 0 0.5rem 0;
+}
+
+p {
+  @include typography(base, 6); // 1em, 1.625
+  font-weight: 400;
+  margin: 0 0 1rem 0;
+  max-width: 100%;
+}
+
+li {
+  @include typography(base, 6); // 1em, 1.625
+  font-weight: 400;
+  margin: 0 0 0.5rem 0;
+  color: navyblue(950);
+  
+  &.large {
+    @include typography(lg, 6); // 1.125em, 1.625
+  }
+  
+  &.small {
+    @include typography(sm, 5); // 0.875em, 1.5
+  }
+}
+
+ul, ol {
+  margin: 0 0 1rem 0;
+  padding-left: 1.5rem;
+  
+  li {
+    margin-bottom: .5rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ul, ol {
+    margin: .5rem 0 .5rem 0;
+  }
+}
+
+img {
+  object-fit: cover;
+}
+
+table {
+  // デフォルト：内容にフィットしつつはみ出し防止
+  width: auto;
+  max-width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  overflow: hidden;
+  word-wrap: break-word;
+  
+  // 幅指定クラス（utility.scssの$widthsを使用）
+  @each $name, $value in $widths {
+    &.w-#{$name} {
+      width: $value;
+      max-width: none;
+    }
+  }
+  
+  // 最大幅指定クラス（utility.scssの$max-widthsを使用）
+  @each $name, $value in $max-widths {
+    &.max-w-#{$name} {
+      max-width: $value;
+    }
+  }
+  
+  // セルの基本設定
+  th, td {
+    padding: 0.75rem 1rem;
+    vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  // ヘッダー
+  th {
+    font-weight: 600;
+    text-align: left;
+    background-color: grayblue(50);
+    border-bottom: 2px solid grayblue(300);
+    white-space: nowrap;
+    color: navyblue(950);
+  }
+  
+  // データセル
+  td {
+    border-bottom: 1px solid grayblue(200);
+    white-space: normal;
+    color: navyblue(950);
+  }
+  
+  // 行のスタイル
+  tr {
+    &:nth-child(even) {
+      background-color: grayblue(10);
+    }
+  }
+  
+  tbody {
+    tr {
+      transition: background-color 0.2s ease;
+      
+      &:last-child td {
+        border-bottom: none;
+      }
+    }
+  }
+  
+  thead {
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+  }
+  
+  tfoot {
+    th, td {
+      font-weight: 600;
+      background-color: grayblue(50);
+      border-top: 2px solid grayblue(300);
+    }
+  }
+
+  &.smart-fit {
+    width: auto;
+    max-width: min(90vw, 1600px);
+    
+    th {
+      min-width: min-content;
+      max-width: 200px;
+    }
+    
+    td {
+      max-width: 300px;
+      word-break: break-word;
+      
+      &:first-child {
+        white-space: nowrap;
+        max-width: 150px;
+        font-weight: 500;
+      }
+      
+      &:nth-child(2) {
+        max-width: 400px;
+        word-break: break-all;
+      }
+    }
+  }
+  
+  // プロフィールテーブル
+  &.profile {
+    width: auto;
+    max-width: max-width(lg);
+    
+    th, td {
+      &:first-child {
+        width: 30%;
+        min-width: 120px;
+        max-width: 200px;
+        white-space: nowrap;
+        font-weight: 500;
+        color: navyblue(700);
+      }
+      
+      &:nth-child(2) {
+        width: 70%;
+        max-width: 600px;
+        white-space: normal;
+        word-break: break-word;
+      }
+    }
+  }
+  &.data {
+    width: width(full);
+    max-width: max-width(5xl);
+    table-layout: fixed;
+    
+    th, td {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  &.compact {
+    width: auto;
+    max-width: max-width(md);
+    font-size: 0.9em;
+    
+    th, td {
+      padding: 0.5rem 0.75rem;
+    }
+  }  
+  &.fixed-layout {
+    width: 100%;
+    max-width: min(90vw, 1200px);
+    table-layout: fixed;
+    
+    th, td {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      
+      &:first-child {
+        width: 30%;
+      }
+      
+      &:nth-child(2) {
+        width: 70%;
+      }
+    }
+    
+    th {
+      white-space: nowrap;
+    }
+    
+    td {
+      white-space: normal;
+      word-break: break-word;
+    }
+  }
+
+  &.fit {
+    width: auto;
+    max-width: max-content;
+    display: inline-table;
+    
+    th, td {
+      white-space: nowrap;
+      width: auto;
+    }
+  }
+  
+  &.two-col-equal {
+    th, td {
+      &:first-child { width: width(1\/2); }
+      &:nth-child(2) { width: width(1\/2); }
+    }
+  }
+  
+  &.two-col-narrow-wide {
+    th, td {
+      &:first-child { width: 30%; max-width: 200px; }
+      &:nth-child(2) { width: 70%; }
+    }
+  }
+
+  .cell-number {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  
+  .cell-date {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  
+  .cell-url {
+    word-break: break-all;
+    max-width: 300px;
+  }
+  
+  .cell-description {
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.4;
+  }
+  
+  .cell-label {
+    white-space: nowrap;
+    font-weight: 500;
+    color: navyblue(700);
+  }
+}
