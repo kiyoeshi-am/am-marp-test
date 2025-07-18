@@ -1,6 +1,7 @@
 {
-    "markdown.marp.themes": [
-        "./themes/theme.css"
-    ],
-    "markdown.marp.strictPathResolutionDuringExport": true
+  "markdown.marp.themes": [
+    "./themes/theme_Algomatic.css"
+  ],
+  "markdown.marp.html": "all",
+  "markdown.marp.enableMathTypescript": "true"
 }

@@ -1,0 +1,190 @@
+@use 'utility' as *;
+
+/* =============================================================================
+   Structure Template Styles
+   template_structure.md用のスタイル定義
+   ============================================================================= */
+
+// 3カラムレイアウト
+section.three-column {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+  
+  h3 {
+    margin-bottom: 1rem;
+    color: navyblue(700);
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  
+  p {
+    color: grayblue(600);
+    line-height: 1.5;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+}
+
+
+
+// 登壇資料系表紙（長いタイトル用）
+section.cover.presentation {
+  background-color: navyblue(950);
+  color: #ffffff;
+  height: 100vh;
+  padding: 4rem 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  
+  // メインコンテンツ（左寄せ）
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    text-align: left;
+    width: 100%;
+    max-width: 800px;
+    margin-left: 0;
+    align-self: stretch;
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 3rem;
+    line-height: 1.5;
+    text-align: left;
+    width: 100%;
+    max-width: 800px;
+    margin-left: 0;
+    align-self: stretch;
+  }
+  
+  // ロゴ（タイトル下、左寄せ）
+  img:first-of-type {
+    width: 120px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+    margin-bottom: 3rem;
+    margin-left: 0;
+    align-self: stretch;
+  }
+  
+  // 登壇者情報（左寄せ）
+  strong {
+    display: block;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 0.3rem;
+    text-align: left;
+    margin-left: 0;
+    align-self: stretch;
+    
+    &:nth-of-type(1) {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  // 登壇者画像（左寄せ、名前の上）
+  img:last-of-type {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    margin-bottom: 1rem;
+    display: block;
+    margin-left: 0;
+    align-self: stretch;
+  }
+}
+
+// 会社資料系表紙（短いタイトル用）
+section.cover.company-deck {
+  background-color: navyblue(950);
+  color: #ffffff;
+  height: 100vh;
+  padding: 4rem 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  
+  // メインコンテンツ（左寄せ）
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    text-align: left;
+    width: 100%;
+    max-width: 800px;
+    margin-left: 0;
+    align-self: stretch;
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 3rem;
+    line-height: 1.5;
+    text-align: left;
+    width: 100%;
+    max-width: 800px;
+    margin-left: 0;
+    align-self: stretch;
+  }
+  
+  // ロゴ（タイトル下、左寄せ）
+  img:first-of-type {
+    width: 120px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+    margin-bottom: 3rem;
+    margin-left: 0;
+    align-self: stretch;
+  }
+  
+  // 登壇者情報（左寄せ）
+  strong {
+    display: block;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 0.3rem;
+    text-align: left;
+    margin-left: 0;
+    align-self: stretch;
+    
+    &:nth-of-type(1) {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  // 登壇者画像（左寄せ、名前の上）
+  img:last-of-type {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    margin-bottom: 1rem;
+    display: block;
+    margin-left: 0;
+    align-self: stretch;
+  }
+} 

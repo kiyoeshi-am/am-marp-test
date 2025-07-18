@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: theme
+theme: theme_Algomatic
 paginate: true
 ---
 
@@ -18,7 +18,7 @@ paginate: true
 - ABCabc123
 - ABCabc123
 
-DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
+DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
 
 ---
 
@@ -34,44 +34,35 @@ DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDes
 | 関係会社 | 合同会社DMM.com / 株式会社Algomatic Works |
 
 ---
-<!-- 3カラムレイアウト -->
 
+<!-- _header: '3カラムレイアウト' -->
 <!-- _class: three-column -->
+
 # Image with description
 
 ![](image.jpg)
 
-<div class="column-container">
-<div class="column">
-
 ### First thing
 Add a quick description...
-
-</div>
-<div class="column">
 
 ### Second thing
 Keep 'em short and sweet...
 
-</div>
-<div class="column">
-
 ### Third thing
 If you've got a bunch...
 
-</div>
-</div>
-
 ---
 
-<!-- レイアウト4: セクションタイトル -->
+<!-- _header: 'セクションタイトル' -->
 <!-- _class: section-title -->
+
 # Section Title
 Quick description about the section.
 
 ---
 
-<!-- レイアウト1: メインレイアウト -->
+<!-- _header: 'メインレイアウト' -->
+
 ## Subtitle
 # Header
 Add a quick description...
@@ -79,28 +70,15 @@ Add a quick description...
 
 ---
 
-<!-- _class: cover -->
+<!-- _class: title-slide -->
 
-# タイトル
-## サブタイトル
-2025.07.16 Algomatic inc.
+# 大規模データを扱うクラウドセキュリティプラットフォームのアーキテクチャ変遷
+## スケーラビリティとセキュリティの両立を目指して
 
-### aaaa
-#### iiiiiiiii
-ああああ
+![Algomaticロゴ](.images/logo_algomatic.svg)
 
----
+![登壇者](.images/ono.png) 
 
-<!-- _class: cover -->
+- 代表取締役CEO  
+- 大野 峻典
 
-# 目次
-
-1. aaa
-2. bbb
-3. ccc
-
----
-
-<!-- _class: cover -->
-
-# 中表紙

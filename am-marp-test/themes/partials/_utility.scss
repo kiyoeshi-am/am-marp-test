@@ -1,10 +1,13 @@
 @use "sass:map";
 
 /* =============================================================================
-   Marp用ユーティリティクラス集
+   Marp用プレゼンテーションスタイルシステム
    ============================================================================= */
 
-// 変数定義
+// =============================================================================
+// 基本変数定義
+// =============================================================================
+
 $spacing-unit: 1rem;
 $font-sizes: (
   xs3: 0.5em,
@@ -38,27 +41,63 @@ $line-height-scale: (
   10: 2.5
 );
 
-@function font-size($size) {
-  @return map.get($font-sizes, $size);
-}
+// サイズ変数
+$widths: (
+  auto: auto,
+  full: 100%,
+  screen: 100vw,
+  1\/2: 50%,
+  1\/3: 33.333333%,
+  2\/3: 66.666667%,
+  1\/4: 25%,
+  3\/4: 75%,
+  1\/5: 20%,
+  2\/5: 40%,
+  3\/5: 60%,
+  4\/5: 80%,
+  1\/6: 16.666667%,
+  5\/6: 83.333333%
+);
 
-@function line-height($scale) {
-  @return map.get($line-height-scale, $scale);
-}
+$max-widths: (
+  xs: 20rem,
+  sm: 24rem,
+  md: 28rem,
+  lg: 32rem,
+  xl: 36rem,
+  2xl: 42rem,
+  3xl: 48rem,
+  4xl: 56rem,
+  5xl: 64rem,
+  6xl: 72rem,
+  7xl: 80rem,
+  full: 100%,
+  none: none
+);
 
-@mixin typography($size, $leading: null) {
-  font-size: map.get($font-sizes, $size);
-  
-  @if $leading {
-    line-height: map.get($line-height-scale, $leading);
-  }
-}
+$heights: (
+  auto: auto,
+  full: 100%,
+  screen: 100vh,
+  1\/2: 50%,
+  1\/3: 33.333333%,
+  2\/3: 66.666667%,
+  1\/4: 25%,
+  3\/4: 75%
+);
 
-// ==========================
-// Color Tokens
-// --------------------------
-// Algomaticブランドのカラーパレット
-// ==========================
+
+
+// =============================================================================
+// 基本色
+// =============================================================================
+
+$white: #ffffff;
+$black: #000000;
+
+// =============================================================================
+// ブランドカラーパレット
+// =============================================================================
 
 // --- Primary (NavyBlue)
 $navyblue: (
@@ -156,417 +195,17 @@ $purple: (
   950: #421F4D
 );
 
-// --- Basic Colors
-$white: #ffffff;
-$black: #000000;
-
-// Helper functions
-@function navyblue($level) {
-    @return map.get($navyblue, $level);
-}
-
-@function grayblue($level) {
-    @return map.get($grayblue, $level);
-}
-
-@function limegreen($level) {
-    @return map.get($limegreen, $level);
-}
-
-@function orange($level) {
-    @return map.get($orange, $level);
-}
-
-@function red($level) {
-    @return map.get($red, $level);
-}
-
-@function purple($level) {
-    @return map.get($purple, $level);
-}
-
-$primary-colors: $navyblue;
-
 // =============================================================================
-// Layout & Flexbox
+// ヘルパー関数
 // =============================================================================
 
-/* Container & Columns */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+@function font-size($size) {
+  @return map.get($font-sizes, $size);
 }
 
-.c, .columns {
-  display: flex;
-  gap: 1em;
-  
-  > * {
-    flex: 1;
-  }
+@function line-height($scale) {
+  @return map.get($line-height-scale, $scale);
 }
-
-.c-2 { grid-template-columns: repeat(2, 1fr); }
-.c-3 { grid-template-columns: repeat(3, 1fr); }
-.c-4 { grid-template-columns: repeat(4, 1fr); }
-
-/* Grid */
-.grid {
-  display: grid;
-  gap: 1rem;
-}
-
-.grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
-.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
-
-/* Flex */
-.flex {
-  display: flex;
-  
-  &-col { flex-direction: column; }
-  &-row { flex-direction: row; }
-  &-wrap { flex-wrap: wrap; }
-  &-nowrap { flex-wrap: nowrap; }
-}
-
-.justify {
-  &-start { justify-content: flex-start; }
-  &-end { justify-content: flex-end; }
-  &-center { justify-content: center; }
-  &-between { justify-content: space-between; }
-  &-around { justify-content: space-around; }
-}
-
-.items {
-  &-start { align-items: flex-start; }
-  &-end { align-items: flex-end; }
-  &-center { align-items: center; }
-  &-baseline { align-items: baseline; }
-  &-stretch { align-items: stretch; }
-}
-
-.flex-1 { flex: 1; }
-.flex-auto { flex: auto; }
-.flex-none { flex: none; }
-
-/* Position */
-.relative { position: relative; }
-.absolute { position: absolute; }
-.fixed { position: fixed; }
-.sticky { position: sticky; }
-
-/* Fitting */
-.fit {
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  width: max-content;
-  max-width: 100%;
-}
-
-// =============================================================================
-// Spacing (Margin & Padding)
-// =============================================================================
-
-@each $size in (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24) {
-  $value: if($size == 0, 0, #{$size * 0.25}rem);
-  
-  // Margin
-  .m-#{$size} { margin: $value; }
-  .mt-#{$size} { margin-top: $value; }
-  .mr-#{$size} { margin-right: $value; }
-  .mb-#{$size} { margin-bottom: $value; }
-  .ml-#{$size} { margin-left: $value; }
-  .mx-#{$size} { margin-left: $value; margin-right: $value; }
-  .my-#{$size} { margin-top: $value; margin-bottom: $value; }
-  
-  // Padding
-  .p-#{$size} { padding: $value; }
-  .pt-#{$size} { padding-top: $value; }
-  .pr-#{$size} { padding-right: $value; }
-  .pb-#{$size} { padding-bottom: $value; }
-  .pl-#{$size} { padding-left: $value; }
-  .px-#{$size} { padding-left: $value; padding-right: $value; }
-  .py-#{$size} { padding-top: $value; padding-bottom: $value; }
-}
-
-// Auto margins
-.m-auto { margin: auto; }
-.mx-auto { margin-left: auto; margin-right: auto; }
-.my-auto { margin-top: auto; margin-bottom: auto; }
-
-// =============================================================================
-// Typography
-// =============================================================================
-
-/* Font Sizes */
-@each $name, $size in $font-sizes {
-  .text-#{$name} {
-    font-size: $size;
-  }
-}
-
-/* Font Weight */
-.font-thin { font-weight: 100; }
-.font-light { font-weight: 300; }
-.font-normal { font-weight: 400; }
-.font-medium { font-weight: 500; }
-.font-semibold { font-weight: 600; }
-.font-bold { font-weight: 700; }
-.font-extrabold { font-weight: 800; }
-.font-black { font-weight: 900; }
-
-/* Text Alignment */
-.text-left { text-align: left; }
-.text-center { text-align: center; }
-.text-right { text-align: right; }
-.text-justify { text-align: justify; }
-
-/* Line Height */
-.leading-none { line-height: 1; }
-.leading-tight { line-height: 1.25; }
-.leading-snug { line-height: 1.375; }
-.leading-normal { line-height: 1.5; }
-.leading-relaxed { line-height: 1.625; }
-.leading-loose { line-height: 2; }
-
-/* Text Transform */
-.uppercase { text-transform: uppercase; }
-.lowercase { text-transform: lowercase; }
-.capitalize { text-transform: capitalize; }
-.normal-case { text-transform: none; }
-
-/* Text Decoration */
-.underline { text-decoration: underline; }
-.line-through { text-decoration: line-through; }
-.no-underline { text-decoration: none; }
-
-// =============================================================================
-// Colors
-// =============================================================================
-
-// =============================================================================
-// Colors
-// =============================================================================
-
-/* Text Colors */
-// Basic colors
-.text-white { color: $white; }
-.text-black { color: $black; }
-
-// NavyBlue
-@each $level, $color in $navyblue {
-  .text-navyblue-#{$level} { color: $color; }
-}
-
-// GrayBlue
-@each $level, $color in $grayblue {
-  .text-grayblue-#{$level} { color: $color; }
-}
-
-// LimeGreen
-@each $level, $color in $limegreen {
-  .text-limegreen-#{$level} { color: $color; }
-}
-
-// Orange
-@each $level, $color in $orange {
-  .text-orange-#{$level} { color: $color; }
-}
-
-// Red
-@each $level, $color in $red {
-  .text-red-#{$level} { color: $color; }
-}
-
-// Purple
-@each $level, $color in $purple {
-  .text-purple-#{$level} { color: $color; }
-}
-
-/* Background Colors */
-// Basic colors
-.bg-white { background-color: $white; }
-.bg-black { background-color: $black; }
-
-// NavyBlue
-@each $level, $color in $navyblue {
-  .bg-navyblue-#{$level} { background-color: $color; }
-}
-
-// GrayBlue
-@each $level, $color in $grayblue {
-  .bg-grayblue-#{$level} { background-color: $color; }
-}
-
-// LimeGreen
-@each $level, $color in $limegreen {
-  .bg-limegreen-#{$level} { background-color: $color; }
-}
-
-// Orange
-@each $level, $color in $orange {
-  .bg-orange-#{$level} { background-color: $color; }
-}
-
-// Red
-@each $level, $color in $red {
-  .bg-red-#{$level} { background-color: $color; }
-}
-
-// Purple
-@each $level, $color in $purple {
-  .bg-purple-#{$level} { background-color: $color; }
-}
-
-/* Border Colors */
-// Basic colors
-.border-white { border-color: $white; }
-.border-black { border-color: $black; }
-
-// NavyBlue
-@each $level, $color in $navyblue {
-  .border-navyblue-#{$level} { border-color: $color; }
-}
-
-// GrayBlue
-@each $level, $color in $grayblue {
-  .border-grayblue-#{$level} { border-color: $color; }
-}
-
-// LimeGreen
-@each $level, $color in $limegreen {
-  .border-limegreen-#{$level} { border-color: $color; }
-}
-
-// Orange
-@each $level, $color in $orange {
-  .border-orange-#{$level} { border-color: $color; }
-}
-
-// Red
-@each $level, $color in $red {
-  .border-red-#{$level} { border-color: $color; }
-}
-
-// Purple
-@each $level, $color in $purple {
-  .border-purple-#{$level} { border-color: $color; }
-}
-
-// Primary color shortcuts (using navyblue-950 as primary)
-.text-primary { color: navyblue(950); }
-.bg-primary { background-color: white; }
-.border-primary { border-color: navyblue(500); }
-
-// Secondary color shortcuts (using grayblue-500 as secondary)
-.text-secondary { color: grayblue(700); }
-.bg-secondary { background-color: grayblue(10); }
-.border-secondary { border-color: grayblue(500); }
-
-// =============================================================================
-// Borders & Radius
-// =============================================================================
-
-/* Border Width */
-.border { border-width: 1px; }
-.border-0 { border-width: 0; }
-.border-2 { border-width: 2px; }
-.border-4 { border-width: 4px; }
-.border-8 { border-width: 8px; }
-
-.border-t { border-top-width: 1px; }
-.border-r { border-right-width: 1px; }
-.border-b { border-bottom-width: 1px; }
-.border-l { border-left-width: 1px; }
-
-/* Border Radius */
-.rounded-none { border-radius: 0; }
-.rounded-sm { border-radius: 0.125rem; }
-.rounded { border-radius: 0.25rem; }
-.rounded-md { border-radius: 0.375rem; }
-.rounded-lg { border-radius: 0.5rem; }
-.rounded-xl { border-radius: 0.75rem; }
-.rounded-2xl { border-radius: 1rem; }
-.rounded-3xl { border-radius: 1.5rem; }
-.rounded-full { border-radius: 9999px; }
-
-// =============================================================================
-// Size & Dimensions
-// =============================================================================
-
-/* Width */
-.w-auto { width: auto; }
-.w-full { width: 100%; }
-.w-screen { width: 100vw; }
-.w-1\/2 { width: 50%; }
-.w-1\/3 { width: 33.333333%; }
-.w-2\/3 { width: 66.666667%; }
-.w-1\/4 { width: 25%; }
-.w-3\/4 { width: 75%; }
-
-/* Height */
-.h-auto { height: auto; }
-.h-full { height: 100%; }
-.h-screen { height: 100vh; }
-
-/* Max Width */
-.max-w-xs { max-width: 20rem; }
-.max-w-sm { max-width: 24rem; }
-.max-w-md { max-width: 28rem; }
-.max-w-lg { max-width: 32rem; }
-.max-w-xl { max-width: 36rem; }
-.max-w-2xl { max-width: 42rem; }
-.max-w-4xl { max-width: 56rem; }
-.max-w-6xl { max-width: 72rem; }
-.max-w-full { max-width: 100%; }
-
-$widths: (
-  auto: auto,
-  full: 100%,
-  screen: 100vw,
-  1\/2: 50%,
-  1\/3: 33.333333%,
-  2\/3: 66.666667%,
-  1\/4: 25%,
-  3\/4: 75%,
-  1\/5: 20%,
-  2\/5: 40%,
-  3\/5: 60%,
-  4\/5: 80%,
-  1\/6: 16.666667%,
-  5\/6: 83.333333%
-);
-
-$max-widths: (
-  xs: 20rem,
-  sm: 24rem,
-  md: 28rem,
-  lg: 32rem,
-  xl: 36rem,
-  2xl: 42rem,
-  3xl: 48rem,
-  4xl: 56rem,
-  5xl: 64rem,
-  6xl: 72rem,
-  7xl: 80rem,
-  full: 100%,
-  none: none
-);
-
-$heights: (
-  auto: auto,
-  full: 100%,
-  screen: 100vh,
-  1\/2: 50%,
-  1\/3: 33.333333%,
-  2\/3: 66.666667%,
-  1\/4: 25%,
-  3\/4: 75%
-);
 
 @function width($key) {
   @return map.get($widths, $key);
@@ -580,98 +219,129 @@ $heights: (
   @return map.get($heights, $key);
 }
 
-@each $name, $value in $heights {
-  .h-#{$name} {
-    height: $value;
+// カラーヘルパー関数（company.scssの変数を使用）
+@function navyblue($level) {
+  @return map.get($navyblue, $level);
+}
+
+@function grayblue($level) {
+  @return map.get($grayblue, $level);
+}
+
+@function limegreen($level) {
+  @return map.get($limegreen, $level);
+}
+
+@function orange($level) {
+  @return map.get($orange, $level);
+}
+
+@function red($level) {
+  @return map.get($red, $level);
+}
+
+@function purple($level) {
+  @return map.get($purple, $level);
+}
+
+
+
+@mixin typography($size, $leading: null) {
+  font-size: map.get($font-sizes, $size);
+  
+  @if $leading {
+    line-height: map.get($line-height-scale, $leading);
   }
 }
 
 // =============================================================================
-// Display & Visibility
+// プレゼンテーション用コンポーネントスタイル
 // =============================================================================
 
-.block { display: block; }
-.inline-block { display: inline-block; }
-.inline { display: inline; }
-.flex { display: flex; }
-.inline-flex { display: inline-flex; }
-.grid { display: grid; }
-.hidden { display: none; }
+// スライドレイアウト
+.slide {
+  &-title {
+    @include typography(xl8, 2);
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: navyblue(950);
+  }
+  
+  &-subtitle {
+    @include typography(xl4, 4);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: navyblue(700);
+  }
+  
+  &-content {
+    @include typography(base, 6);
+    margin-bottom: 1rem;
+  }
+  
+  &-highlight {
+    background-color: limegreen(100);
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    color: limegreen(800);
+  }
+}
 
-.visible { visibility: visible; }
-.invisible { visibility: hidden; }
+// カードコンポーネント
+.card {
+  background-color: $white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid grayblue(200);
+  
+  &-title {
+    @include typography(xl2, 5);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: navyblue(950);
+  }
+  
+  &-content {
+    @include typography(base, 6);
+    color: navyblue(900);
+  }
+  
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}
 
-// =============================================================================
-// Shadows & Effects
-// =============================================================================
+// メトリック表示
+.metric {
+  text-align: center;
+  padding: 1rem;
+  
+  &-value {
+    @include typography(xl6, 3);
+    font-weight: 700;
+    color: navyblue(950);
+    margin-bottom: 0.5rem;
+  }
+  
+  &-label {
+    @include typography(sm, 5);
+    color: grayblue(600);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+}
 
-.shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
-.shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
-.shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
-.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
-.shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
-.shadow-none { box-shadow: none; }
-
-// =============================================================================
-// Transitions & Animations
-// =============================================================================
-
-.transition { transition: all 0.3s ease; }
-.transition-colors { transition: color 0.3s ease, background-color 0.3s ease; }
-.transition-opacity { transition: opacity 0.3s ease; }
-.transition-transform { transition: transform 0.3s ease; }
-
-.hover\:scale-105:hover { transform: scale(1.05); }
-.hover\:scale-110:hover { transform: scale(1.1); }
-.hover\:opacity-80:hover { opacity: 0.8; }
-.hover\:opacity-60:hover { opacity: 0.6; }
-
-// =============================================================================
-// Opacity
-// =============================================================================
-
-.opacity-0 { opacity: 0; }
-.opacity-25 { opacity: 0.25; }
-.opacity-50 { opacity: 0.5; }
-.opacity-75 { opacity: 0.75; }
-.opacity-100 { opacity: 1; }
-
-// =============================================================================
-// Z-Index
-// =============================================================================
-
-.z-0 { z-index: 0; }
-.z-10 { z-index: 10; }
-.z-20 { z-index: 20; }
-.z-30 { z-index: 30; }
-.z-40 { z-index: 40; }
-.z-50 { z-index: 50; }
-
-// =============================================================================
-// Overflow
-// =============================================================================
-
-.overflow-auto { overflow: auto; }
-.overflow-hidden { overflow: hidden; }
-.overflow-visible { overflow: visible; }
-.overflow-scroll { overflow: scroll; }
-
-// =============================================================================
-// Cursor
-// =============================================================================
-
-.cursor-auto { cursor: auto; }
-.cursor-default { cursor: default; }
-.cursor-pointer { cursor: pointer; }
-.cursor-wait { cursor: wait; }
-.cursor-text { cursor: text; }
-.cursor-move { cursor: move; }
-.cursor-not-allowed { cursor: not-allowed; }
-
-// =============================================================================
-// Alert/Notification Components
-// =============================================================================
-
+// アラート・通知
 .alert {
   --padding-x: 1.25rem;
   --padding-y: 0.75rem;
@@ -693,121 +363,142 @@ $heights: (
     margin-bottom: 0.5rem;
   }
   
-  &::after {
-    position: absolute;
-    top: calc(var(--padding-y) * 1.3);
-    left: calc(var(--padding-x) - 0.2rem);
-    content: '';
-    width: 1rem;
-    height: 1rem;
+  &-info {
+    @extend .alert;
+    background-color: rgba(navyblue(200), 0.3);
+    
+    &::before {
+      content: 'Info';
+      color: navyblue(700);
+    }
   }
-}
-
-.alert-info {
-  @extend .alert;
-  background-color: rgba(navyblue(200), 0.3);
   
-  &::before {
-    content: 'Info';
-    color: navyblue(700);
+  &-success {
+    @extend .alert;
+    background-color: rgba(limegreen(200), 0.3);
+    
+    &::before {
+      content: 'Success';
+      color: limegreen(700);
+    }
   }
-}
-
-.alert-success {
-  @extend .alert;
-  background-color: rgba(limegreen(200), 0.3);
   
-  &::before {
-    content: 'Success';
-    color: limegreen(700);
+  &-warning {
+    @extend .alert;
+    background-color: rgba(orange(200), 0.3);
+    
+    &::before {
+      content: 'Warning';
+      color: orange(700);
+    }
   }
-}
-
-.alert-warning {
-  @extend .alert;
-  background-color: rgba(orange(200), 0.3);
   
-  &::before {
-    content: 'Warning';
-    color: orange(700);
+  &-error {
+    @extend .alert;
+    background-color: rgba(red(200), 0.3);
+    
+    &::before {
+      content: 'Error';
+      color: red(700);
+    }
   }
 }
 
-.alert-error {
-  @extend .alert;
-  background-color: rgba(red(200), 0.3);
+// レイアウトユーティリティ
+.layout {
+  &-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
   
-  &::before {
-    content: 'Error';
-    color: red(700);
+  &-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  
+  &-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  &-grid {
+    display: grid;
+    gap: 1.5rem;
+    
+    &-2 { grid-template-columns: repeat(2, 1fr); }
+    &-3 { grid-template-columns: repeat(3, 1fr); }
+    &-4 { grid-template-columns: repeat(4, 1fr); }
   }
 }
 
-// =============================================================================
-// Utility Classes for Presentations
-// =============================================================================
-
-.center-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+// テキストユーティリティ
+.text {
+  &-primary { color: navyblue(950); }
+  &-secondary { color: grayblue(700); }
+  &-accent { color: limegreen(600); }
+  &-muted { color: grayblue(500); }
+  
+  &-center { text-align: center; }
+  &-left { text-align: left; }
+  &-right { text-align: right; }
+  
+  &-xs { @include typography(xs, 5); }
+  &-sm { @include typography(sm, 5); }
+  &-base { @include typography(base, 6); }
+  &-lg { @include typography(lg, 5); }
+  &-xl { @include typography(xl, 5); }
+  &-xl2 { @include typography(xl2, 5); }
+  &-xl3 { @include typography(xl3, 4); }
+  &-xl4 { @include typography(xl4, 4); }
+  &-xl5 { @include typography(xl5, 3); }
+  &-xl6 { @include typography(xl6, 3); }
+  &-xl7 { @include typography(xl7, 3); }
+  &-xl8 { @include typography(xl8, 2); }
+  &-xl9 { @include typography(xl9, 1); }
 }
 
-.full-height {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+// 背景色ユーティリティ
+.bg {
+  &-white { background-color: $white; }
+  &-primary { background-color: navyblue(50); }
+  &-secondary { background-color: grayblue(10); }
+  &-accent { background-color: limegreen(50); }
 }
 
-.slide-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  text-align: center;
+// スペーシングユーティリティ（最小限）
+.spacing {
+  &-none { margin: 0; padding: 0; }
+  &-sm { margin: 0.5rem; padding: 0.5rem; }
+  &-md { margin: 1rem; padding: 1rem; }
+  &-lg { margin: 1.5rem; padding: 1.5rem; }
+  &-xl { margin: 2rem; padding: 2rem; }
 }
 
-.slide-subtitle {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  color: #666;
-}
+// 表示・非表示ユーティリティ
+.hidden { display: none; }
+.visible { display: block; }
 
-.highlight {
-  background-color: #fef3c7;
-  padding: 0.125rem 0.25rem;
-  border-radius: 0.25rem;
-}
-
-.badge {
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  border-radius: 0.375rem;
-  background-color: #e5e7eb;
-  color: #374151;
-}
-
-// =============================================================================
-// Responsive Utilities
-// =============================================================================
-
+// レスポンシブ対応（最小限）
 @media (max-width: 768px) {
-  .sm\:hidden { display: none; }
-  .sm\:block { display: block; }
-  .sm\:text-sm { font-size: 0.875rem; }
-  .sm\:text-base { font-size: 1rem; }
-  .sm\:p-4 { padding: 1rem; }
-  .sm\:m-2 { margin: 0.5rem; }
-}
-
-@media (min-width: 769px) {
-  .md\:block { display: block; }
-  .md\:flex { display: flex; }
-  .md\:grid { display: grid; }
-  .md\:text-lg { font-size: 1.125rem; }
-  .md\:text-xl { font-size: 1.25rem; }
+  .layout-split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .layout-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .text-xl8 {
+    @include typography(xl6, 3);
+  }
+  
+  .text-xl9 {
+    @include typography(xl7, 3);
+  }
 }

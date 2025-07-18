@@ -1,0 +1,368 @@
+@use 'utility' as *;
+
+/* =============================================================================
+   Slide Components
+   スライドデザイン用コンポーネント群
+   ============================================================================= */
+
+// =============================================================================
+// レイアウトコンポーネント
+// =============================================================================
+
+// 2分割レイアウト
+.layout-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  height: calc(100vh - 80px);
+  
+  .split-left, .split-right {
+    padding: 1rem;
+  }
+  
+  .split-left {
+    text-align: left;
+  }
+  
+  .split-right {
+    text-align: left;
+  }
+}
+
+// 3分割レイアウト
+.layout-three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  align-items: start;
+  height: calc(100vh - 80px);
+  
+  .three-item {
+    padding: 1rem;
+    text-align: center;
+  }
+}
+
+// 4分割レイアウト
+.layout-four {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
+  height: calc(100vh - 80px);
+  
+  .four-item {
+    padding: 1rem;
+    text-align: center;
+  }
+}
+
+// 中央配置レイアウト
+.layout-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: calc(100vh - 80px);
+  padding: 2rem;
+}
+
+// 縦積みレイアウト
+.layout-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: calc(100vh - 80px);
+  padding: 2rem;
+}
+
+// =============================================================================
+// カードコンポーネント（スライド用）
+// =============================================================================
+
+// 基本カード
+.card {
+  background-color: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid grayblue(200);
+  
+  .card-header {
+    margin-bottom: 1rem;
+    
+    h3 {
+      color: navyblue(700);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .card-subtitle {
+      color: grayblue(600);
+      font-size: 0.9rem;
+    }
+  }
+  
+  .card-content {
+    color: navyblue(900);
+    line-height: 1.6;
+  }
+  
+  .card-footer {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid grayblue(200);
+    font-size: 0.9rem;
+    color: grayblue(600);
+  }
+}
+
+// アイコンカード
+.card-icon {
+  @extend .card;
+  text-align: center;
+  
+  .card-icon-image {
+    width: 100%;
+    height: 80px;
+    margin: 0 auto 1rem auto;
+    object-fit: contain;
+  }
+}
+
+// 統計カード
+.card-stat {
+  @extend .card;
+  text-align: center;
+  
+  .stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: navyblue(700);
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-label {
+    font-size: 1.1rem;
+    color: grayblue(600);
+    margin-bottom: 1rem;
+  }
+  
+  .stat-description {
+    font-size: 0.9rem;
+    color: navyblue(800);
+    line-height: 1.4;
+  }
+}
+
+// =============================================================================
+// メトリックコンポーネント
+// =============================================================================
+
+// メトリックグリッド
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+  
+  .metric-item {
+    @extend .card-stat;
+  }
+}
+
+// プログレスバー
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background-color: grayblue(200);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 1rem 0;
+  
+  .progress-fill {
+    height: 100%;
+    background-color: navyblue(600);
+    border-radius: 6px;
+  }
+}
+
+// プログレスラベル
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  
+  .progress-text {
+    font-weight: 600;
+    color: navyblue(700);
+    font-size: 1.1rem;
+  }
+  
+  .progress-value {
+    font-size: 1rem;
+    color: grayblue(600);
+  }
+}
+
+// =============================================================================
+// ハイライトコンポーネント
+// =============================================================================
+
+// 引用
+.quote {
+  border-left: 4px solid grayblue(600);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: navyblue(800);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  
+  .quote-author {
+    margin-top: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    color: navyblue(700);
+  }
+}
+
+// ハイライトボックス
+.highlight-box {
+  background-color: navyblue(50);
+  border: 1px solid grayblue(200);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  
+  .highlight-title {
+    font-weight: 600;
+    color: navyblue(700);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .highlight-content {
+    color: navyblue(900);
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+}
+
+// =============================================================================
+// ステップ・プロセスコンポーネント
+// =============================================================================
+
+.step-process {
+  counter-reset: step;
+  
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    
+    &::before {
+      counter-increment: step;
+      content: counter(step);
+      background-color: navyblue(600);
+      color: white;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-right: 1.5rem;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+    
+    .step-content {
+      flex: 1;
+      
+      .step-title {
+        font-weight: 600;
+        color: navyblue(700);
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+      }
+      
+      .step-description {
+        color: navyblue(800);
+        line-height: 1.5;
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+// =============================================================================
+// 比較テーブルコンポーネント
+// =============================================================================
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 1.1rem;
+  
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid grayblue(200);
+  }
+  
+  th {
+    background-color: grayblue(50);
+    font-weight: 600;
+    color: navyblue(700);
+  }
+  
+  td {
+    color: navyblue(900);
+  }
+  
+  .highlight {
+    background-color: navyblue(50);
+    font-weight: 600;
+  }
+  
+  .check {
+    color: #10b981;
+    font-weight: 600;
+  }
+  
+  .cross {
+    color: #ef4444;
+    font-weight: 600;
+  }
+}
+
+// =============================================================================
+// レスポンシブ対応
+// =============================================================================
+
+@media (max-width: 768px) {
+  .layout-split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .layout-three {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .layout-four {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+} 

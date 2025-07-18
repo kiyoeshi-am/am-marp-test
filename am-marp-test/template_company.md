@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: theme
+theme: theme_Algomatic
 paginate: true
 ---
 
@@ -30,19 +30,12 @@ paginate: true
 <!-- _header: 'Algomaticのミッション' -->
 <!-- _class: mission -->
 
-<div class="container">
-
-<div class="container_left">
-
 ### Mission  
 #### AI革命で人々を幸せにする
 
 ### Vision
 #### 時代を代表する事業群を創る
 
-</div>
-
-<div class="container_right">
 Algomaticは、未来を創造する革新者である。
 私たちは、まだ見ぬ未来を描き、現実のものとする。
 人類の幸せな未来を創造することは、最高に面白いミッションだ。
@@ -53,14 +46,11 @@ Algomaticは、尖った才能の集合である。
 その両輪を極め、世界を変える発明を生み出し続ける。
 技術力と商才を結集し、人々の人生を幸せで満たす。
 それこそが、Algomaticの存在意義であり、喜びなのだ。
-</div>
-
-</div>
 
 ---
 
-<!-- _class: company-profile -->
 <!-- _header: 'プロフィール' -->
+<!-- _class: company-profile -->
 
 **Algomatic 代表取締役CEO**
 #### 大野 峻典 / Shunsuke Ono
@@ -68,29 +58,23 @@ Algomaticは、尖った才能の集合である。
 2018年、機械学習・深層学習を用いたソリューション開発を行う株式会社Algoageを創業
 2020年、DMMグループへM&Aによりジョイン。2023年、大規模言語モデル等生成AI技術を活用した、サービスの開発・提供を行う株式会社Algomaticを創業。
 
-![代表取締役CEO 大野 峻典の写真](.images/ono.png){.ceo-message}
+![代表取締役CEO 大野 峻典の写真](.images/ono.png)
+
+---
+# 生成AIサービスに特化したスタートアップ企業
+
+## 設立2年目で従業員数100名超と急成長
+
+![Algomaticロゴ](.images/logo_algomatic.svg)
+
+![登壇者アイコン](.images/ono.png)
+
+**代表取締役CEO**
+**大野 峻典 / Shunsuke Ono**
 
 ---
 
-<!-- _class: cover -->
-<!-- _header: 'Algomatic 会社概要' -->
-
-生成AIサービスに特化したスタートアップ企業。設立2年目で従業員数100名超と急成長。
-代表取締役CEOの大野はAI事業開発の専門家。経済メディアPIVOTにて、最先端の生成AI・LLMの知見を解説。
-
-| 項目 | 内容 |
-|-|-|
-| 会社名 | 株式会社Algomatic |
-| 設立日 | 令和5年4月13日 |
-| 代表者 | 代表取締役 CEO 大野 峻典 |
-| 主事業 | 大規模言語モデル等生成AI技術を活用した、サービスの開発・提供 |
-| 事業所 | 東京都中央区日本橋久松町10-6 THE CROSS日本橋人形町 8F |
-| 関係会社 | 合同会社DMM.com / 株式会社Algomatic Works |
-
----
-
-<!-- _class: cover -->
-
+<!-- _header: 'Value' -->
 # Value
 
 Algomaticでは、激動の時代に即応し続けるため、
@@ -111,8 +95,7 @@ Algomaticでは、激動の時代に即応し続けるため、
 
 ---
 
-<!-- _class: cover -->
-
+<!-- _header: '代表メッセージ' -->
 # 代表メッセージ
 
 ## 人類史上2度目の革命を、どう生きるか？
@@ -121,4 +104,4 @@ Algomaticでは、激動の時代に即応し続けるため、
 2025年、「いくぞ25」を合言葉に、日本を代表する企業への歩みを加速します。人類二度目の言語革命。その最前線に立ち、AIの力で世界を幸せで満たす。
 この挑戦に、共に立ち向かいませんか？
 
-![代表取締役CEO 大野 峻典の写真](.images/ono.png){.ceo-message}
+![代表取締役CEO 大野 峻典の写真](.images/ono.png)

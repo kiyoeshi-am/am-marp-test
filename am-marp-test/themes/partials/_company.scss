@@ -1,0 +1,238 @@
+@use 'utility' as *;
+
+/* =============================================================================
+   Company Template Styles
+   template_company.md用のスタイル定義
+   ============================================================================= */
+
+
+
+
+
+
+
+// 会社概要スライド（運営サービス一覧）
+section.company {
+  padding: 1rem;
+  
+  h4 {
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid grayblue(700);
+    position: relative;
+    color: navyblue(950);
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0 2rem;
+    margin: 0;
+  }
+  
+  li {
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    border: 1px solid grayblue(300);
+    margin: 0;
+    text-align: center;
+    
+    img {
+      background-color: #ffffff !important;
+      width: 100%;
+      height: 80px;
+      object-fit: contain;
+      margin: 0 auto 1rem auto;
+      display: block;
+      box-sizing: border-box;
+    }
+    
+    font-size: 0.85rem;
+    line-height: 1.4;
+    text-align: left;
+    color: navyblue(950);
+  }
+}
+
+// ミッション・ビジョンスライド
+section.mission {
+  display: flex;
+  gap: 4rem;
+  width: 100%;
+  align-items: center;
+  height: calc(100vh - 80px);
+  padding: 2rem;
+  
+  // 左側（Mission & Vision）
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: grayblue(600);
+    border-bottom: 1px solid grayblue(200);
+    padding-bottom: 0.5rem;
+    margin: 3rem 0 1rem 0;
+    
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+  
+  h4 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: navyblue(950);
+    line-height: 1.2;
+    margin-bottom: 3rem;
+  }
+  
+  // 右側（説明文）
+  p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: left;
+    color: navyblue(900);
+    flex: 1;
+  }
+}
+
+// プロフィールスライド
+section.company-profile {
+  padding: 2rem;
+  
+  h3 {
+    color: navyblue(700);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  h4 {
+    color: navyblue(950);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: navyblue(900);
+    margin-bottom: 2rem;
+  }
+  
+  img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 2rem auto;
+    display: block;
+    border: 4px solid grayblue(100);
+  }
+}
+
+// カバーページ（会社概要、Value、代表メッセージ）
+section.cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  padding: 2rem;
+  
+  h1 {
+    margin-bottom: 1rem;
+    color: navyblue(950);
+  }
+  
+  h2 {
+    margin-bottom: 2rem;
+    color: navyblue(700);
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  
+  h3 {
+    margin-bottom: 1rem;
+    color: grayblue(600);
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+  
+  h4 {
+    color: grayblue(500);
+    font-size: 1.2rem;
+  }
+  
+  // Valueスライド専用スタイル
+  ul {
+    text-align: left;
+    max-width: 800px;
+    margin: 2rem auto;
+    
+    li {
+      margin-bottom: 1.5rem;
+      padding-left: 1rem;
+      line-height: 1.6;
+      
+      strong {
+        color: navyblue(700);
+        font-weight: 600;
+      }
+    }
+  }
+  
+  // 代表メッセージスライド専用スタイル
+  p {
+    text-align: left;
+    max-width: 900px;
+    margin: 1.5rem auto;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: navyblue(900);
+  }
+  
+  // 会社概要テーブル専用スタイル
+  table {
+    width: auto;
+    max-width: 800px;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid grayblue(200);
+    }
+    
+    th {
+      background-color: grayblue(50);
+      font-weight: 600;
+      color: navyblue(700);
+      width: 30%;
+      min-width: 120px;
+    }
+    
+    td {
+      color: navyblue(900);
+      width: 70%;
+    }
+  }
+  
+  // 代表メッセージの画像
+  img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 2rem auto;
+    display: block;
+    border: 4px solid grayblue(100);
+  }
+}
